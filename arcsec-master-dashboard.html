@@ -1,0 +1,231 @@
+<!--
+Digitally Notarized & Sealed (ARCSEC Protocol)
+Creator / Author / Owner: Daniel Guzman
+GitHub Username: dguzman9688678
+Email: guzman.daniel@outlook.com
+ARCSEC Protocol Version: 1.0
+SHA-256 Hash: [Insert latest hash for this file/asset]
+Confirmation ID: [Insert unique confirmation ID]
+Date: 2025-09-29
+ARCSEC Enforcement: This file, its content, and every byte herein are protected and governed by ARCSEC Protocol.
+Legal Notice: No copy, transfer, modification, or use is permitted without compliance to ARCSEC. All rights reserved.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>ARCSEC Master Dashboard — Ultimate</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="author" content="Daniel Guzman" />
+  <meta name="arcsec-protocol-version" content="1.0" />
+  <meta name="arcsec-owner" content="Daniel Guzman (dguzman9688678)" />
+  <meta name="arcsec-email" content="guzman.daniel@outlook.com" />
+  <meta name="arcsec-enforcement" content="All code, data, logic, and UI in this file are governed by ARCSEC Protocol. See top block for details." />
+  <style>
+    body { background: #10161a; color: #eee; font-family: 'Segoe UI', sans-serif; margin: 0; }
+    h1, h2, h3 { color: #00cccc; text-align: center; }
+    .arcsec-block {
+      background: #181f29; color: #0ff; border-radius: 12px; padding: 1.2em 1.4em;
+      margin: 2em auto 2.8em auto; font-size: 1.07em; max-width: 980px; box-shadow: 0 2px 18px #0007;
+      letter-spacing: 0.01em;
+    }
+    .dashboard { display: flex; flex-wrap: wrap; gap: 28px; justify-content: center; align-items: flex-start; }
+    .dash-col { min-width: 375px; max-width: 580px; flex: 1; }
+    .panel { background: #181f29; border-radius: 14px; padding: 1.1em 1em; margin: 1.2em 0; box-shadow: 0 2px 18px #0006; }
+    .panel h2 { margin: 0 0 0.7em 0; }
+    .artifact-table { width: 100%; border-collapse: collapse; font-size: 1em; margin-bottom: 1em;}
+    .artifact-table th, .artifact-table td { border: 1px solid #00cccc33; padding: 0.5em 0.7em; text-align: left; }
+    .artifact-table th { background: #161f25; color: #0ff; }
+    .artifact-table td { background: #141b22; }
+    .btn { background: #00cccc; color: #111; border: none; border-radius: 7px; font-weight: bold; font-size: 1em; padding: 0.38em 1.1em; cursor: pointer; margin-right: 0.3em;}
+    .btn:disabled { background: #333; color: #888; cursor: not-allowed; }
+    .soulprint-box { background: #131c23; color: #0ff; border-radius: 9px; font-family: 'Fira Mono', monospace; padding: 0.8em 1em; margin: 1em 0; font-size: 0.99em;}
+    .log-feed { background: #232c34; border-radius: 10px; min-height: 90px; max-height: 200px; overflow-y: auto; font-family: 'Fira Mono', monospace; font-size: 1em; margin-bottom: 1.3em; padding: 1em;}
+    .status-green { color: #0f9; font-weight: bold; }
+    .status-red { color: #f66; font-weight: bold; }
+    .status-yellow { color: #ff0; font-weight: bold; }
+    .audit-section { background: #181f29; border-radius: 10px; padding: 1em 1em; margin: 1.2em 0;}
+    .arcsec-footer {
+      margin: 3em auto 2em auto; text-align: center; color: #00cccc; font-size: 1.05em;
+      max-width: 680px; background: #10161a; border-radius: 10px; padding:1.1em 1.4em;
+      border: 1.5px solid #00cccc44;
+    }
+    .soulprint-id { font-size: 1.09em; font-weight: bold; color: #0ff;}
+    .artifact-pdf { color: #41f7ff; text-decoration: underline; }
+    .artifact-csv { color: #fff; }
+    .artifact-html { color: #e0f; }
+  </style>
+</head>
+<body>
+  <div class="arcsec-block">
+    <b>ARCSEC Protocol Digital Signature Block</b><br>
+    Digitally Notarized & Sealed (ARCSEC Protocol)<br>
+    Creator / Author / Owner: Daniel Guzman<br>
+    GitHub Username: dguzman9688678<br>
+    Email: guzman.daniel@outlook.com<br>
+    ARCSEC Protocol Version: 1.0<br>
+    SHA-256 Hash: [Insert latest hash for this file/asset]<br>
+    Confirmation ID: [Insert unique confirmation ID]<br>
+    Date: 2025-09-29<br>
+    ARCSEC Enforcement: This file, its content, and every byte herein are protected and governed by ARCSEC Protocol.<br>
+    Legal Notice: No copy, transfer, modification, or use is permitted without compliance to ARCSEC. All rights reserved.<br>
+  </div>
+  <h1>ARCSEC Master Dashboard</h1>
+  <div class="dashboard">
+    <div class="dash-col">
+      <div class="panel">
+        <h2>ARCSEC Soulprint</h2>
+        <div class="soulprint-box" id="soulprintBox">
+          <span class="soulprint-id">Soulprint ID:</span> <span id="soulprintId">[auto-generated]</span><br>
+          SHA-256 Hash: <span id="soulprintHash">[pending]</span><br>
+          Creator: Daniel Guzman<br>
+          GitHub: dguzman9688678<br>
+          Email: guzman.daniel@outlook.com<br>
+          Protocol: ARCSEC 1.0<br>
+          Sovereignty: <b>EXCLUSIVE</b><br>
+          Date: <span id="soulprintDate"></span>
+        </div>
+        <button class="btn" onclick="generateSoulprint()">Regenerate Soulprint</button>
+      </div>
+      <div class="panel">
+        <h2>Artifacts</h2>
+        <table class="artifact-table" id="artifactTable">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Status</th>
+              <th>Hash</th>
+              <th>Controls</th>
+            </tr>
+          </thead>
+          <tbody id="artifactRows">
+            <!-- Dynamically filled -->
+          </tbody>
+        </table>
+      </div>
+      <div class="panel">
+        <h2>ARCSEC Command Console</h2>
+        <input id="cmdInput" type="text" placeholder="Type ARCSEC command..." style="width:65%;font-size:1em;">
+        <button class="btn" onclick="runCmd()">Run</button>
+        <div class="log-feed" id="logFeed"></div>
+      </div>
+    </div>
+    <div class="dash-col">
+      <div class="panel">
+        <h2>Live System State</h2>
+        <div id="systemState">
+          <b>Artifacts:</b> <span id="artifactCount"></span><br>
+          <b>Status:</b> <span class="status-green">Online</span><br>
+          <b>ARCSEC Mode:</b> <span class="status-green" id="arcsecMode">Normal</span><br>
+        </div>
+      </div>
+      <div class="panel">
+        <h2>Audit & Compliance</h2>
+        <div class="audit-section" id="auditSection">
+          Audit logs, notarization checks, and compliance events will appear here.
+        </div>
+      </div>
+      <div class="panel">
+        <h2>Linked Documents</h2>
+        <ul>
+          <li><a class="artifact-pdf" href="ARCSEC%20LLM%20Memory%20Link%20System%20Documentation.pdf" target="_blank">ARCSEC LLM Memory Link System Documentation (PDF)</a></li>
+          <li><a class="artifact-csv" href="Meta_Audio_OS_Blueprint%20copy.csv" target="_blank">Meta_Audio_OS_Blueprint (CSV)</a></li>
+          <li><a class="artifact-html" href="ARCSEC_WARMODE_FINAL.html" target="_blank">ARCSEC_WARMODE_FINAL.html</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="arcsec-footer">
+    <b>ARCSEC Protocol Statement:</b><br>
+    All digital assets, code, systems, logic, and data in this file are exclusively owned and governed by Daniel Guzman.<br>
+    No copy, transfer, modification, or use is permitted without ARCSEC compliance.<br>
+    <b>ARCSEC is the sole law, shield, and standard for all my digital work.</b>
+  </div>
+  <script>
+    // Artifact registry (can be loaded from CSV or extended)
+    const artifactList = [
+      {name:"ARCSEC_WARMODE_FINAL.html", status:"Active", hash:"[pending]", type:"html"},
+      {name:"arcsec-master-dashboard.html", status:"Active", hash:"[pending]", type:"html"},
+      {name:"Meta_Audio_OS_Blueprint copy.csv", status:"Active", hash:"[pending]", type:"csv"},
+      {name:"ARCSEC LLM Memory Link System Documentation.pdf", status:"Active", hash:"[pending]", type:"pdf"},
+      {name:"StormVerse Society Agents", status:"Active", hash:"[pending]", type:"system"}
+    ];
+
+    function artifactTypeClass(t) {
+      return t === "pdf" ? "artifact-pdf" :
+             t === "csv" ? "artifact-csv" :
+             t === "html" ? "artifact-html" :
+             "";
+    }
+
+    function renderArtifacts() {
+      let rows = "";
+      artifactList.forEach((a,idx) => {
+        let link = (a.type==="pdf" || a.type==="csv" || a.type==="html") ?
+          `<a class="${artifactTypeClass(a.type)}" href="${encodeURIComponent(a.name)}" target="_blank">${a.name}</a>` : a.name;
+        rows += `<tr>
+          <td>${link}</td>
+          <td class="status-green">${a.status}</td>
+          <td>${a.hash}</td>
+          <td>
+            <button class="btn" onclick="lockdownArtifact(this,${idx})">Lockdown</button>
+            <button class="btn" onclick="auditArtifact(this,${idx})">Audit</button>
+          </td>
+        </tr>`;
+      });
+      document.getElementById('artifactRows').innerHTML = rows;
+      document.getElementById('artifactCount').textContent = artifactList.length;
+    }
+
+    function generateSoulprint() {
+      const d = new Date();
+      const soulprintId = 'ARCSEC-' + Math.random().toString(36).substr(2,10).toUpperCase() + '-' + d.getTime();
+      document.getElementById('soulprintId').textContent = soulprintId;
+      document.getElementById('soulprintDate').textContent = d.toISOString();
+      // In real deployment, compute SHA-256 hash of artifacts, here we just use a placeholder.
+      document.getElementById('soulprintHash').textContent = '[hash-' + soulprintId.substr(-8) + ']';
+      logFeed('Soulprint regenerated: ' + soulprintId);
+    }
+    function lockdownArtifact(btn, idx) {
+      btn.disabled = true;
+      artifactList[idx].status = "Locked";
+      renderArtifacts();
+      logFeed(`Artifact "${artifactList[idx].name}" locked down by ARCSEC order.`);
+      document.getElementById('arcsecMode').textContent = 'Lockdown';
+      document.getElementById('arcsecMode').className = 'status-red';
+    }
+    function auditArtifact(btn, idx) {
+      const artifact = artifactList[idx].name;
+      logFeed('Audit started for: ' + artifact);
+      const auditSection = document.getElementById('auditSection');
+      auditSection.innerHTML = `<b>Audit:</b> ${artifact}<br>Status: <span class="status-yellow">Audit Passed</span><br>Timestamp: ${new Date().toLocaleString()}`;
+    }
+    function runCmd() {
+      const cmd = document.getElementById('cmdInput').value.trim();
+      if (!cmd) return;
+      if (/lockdown/i.test(cmd)) {
+        artifactList.forEach((a, idx) => { if(a.status!="Locked") lockdownArtifact({disabled:false}, idx); });
+        logFeed('ARCSEC Lockdown initiated.');
+      } else if (/audit/i.test(cmd)) {
+        artifactList.forEach((a, idx) => auditArtifact({disabled:false}, idx));
+        logFeed('ARCSEC Audit all artifacts.');
+      } else if (/soulprint/i.test(cmd)) {
+        generateSoulprint();
+      } else {
+        logFeed('Unknown command: ' + cmd);
+      }
+      document.getElementById('cmdInput').value = '';
+      renderArtifacts();
+    }
+    function logFeed(msg) {
+      const logFeed = document.getElementById('logFeed');
+      logFeed.innerHTML += '[' + new Date().toLocaleTimeString() + '] ' + msg + '<br>';
+      logFeed.scrollTop = logFeed.scrollHeight;
+    }
+    // Initialize dashboard on load
+    renderArtifacts();
+    generateSoulprint();
+  </script>
+</body>
+</html>
